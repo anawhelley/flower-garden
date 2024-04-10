@@ -11,6 +11,7 @@ function preload() {
 
 function setup() {
   createCanvas(700, 700);
+  c.parent('rightcan');
   background(255)
   
   noStroke();
