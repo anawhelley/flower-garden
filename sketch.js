@@ -2,33 +2,41 @@ let ellipseColor;
 let buttonSize = 40; // Size of each button
 let buttonGap = 10; // Gap between buttons
 var flowerno;
+let buttonColors = ['#FA42AC', '#F54F51', '#ECCA3D', '#91C7EB', '#3890CB', '#834AC1'];
+var canvas;
+
 
 function preload() {
-  flower1 = loadImage('flower.jpg');
-  flower2 = loadImage('flower2.jpg');
+  flower1 = loadImage('flowers-01.png');
+  flower2 = loadImage('flowers-02.png');
+  flower3 = loadImage('flowers-03.png');
+  flower4 = loadImage('flowers-04.png');
+  flower5 = loadImage('flowers-05.png');
+  flower6 = loadImage('flowers-06.png');
+  bg = loadImage('grass.jpg')
 }
 
 
 function setup() {
-  createCanvas(700, 700);
-  c.parent('rightcan');
-  background(255)
+  canvas = createCanvas(800, 800);
+  canvas.position(600, 10); 
+  background(bg)
   
   noStroke();
-  rect(630, 0, 70, 325)
+
 
   ellipseColor = color(255, 0, 0);
   
-  let colors = [flower1, flower2, color(236, 202, 61), color(145, 199, 235), color(56, 144, 203), color(131, 74, 193)];
+  let colors = [flower1, flower2, flower3, flower4, flower5, flower6];
   
   // Create buttons for each color
   for(let i = 0; i < colors.length; i++) {
     let buttonY = i * (buttonSize + buttonGap) + buttonGap; // Calculate Y position for each button
     let buttonX = width - buttonSize - buttonGap; // X position for buttons
     let button = createButton('').mousePressed(() =>     flowerno=i);
-    button.position(buttonX, buttonY);
+    button.position(buttonX+600, buttonY+10);
     button.size(buttonSize, buttonSize);
-    button.style('background-color', colors[i]);
+    button.style('background-color', buttonColors[i]);
     console.log(colors[i])
   }
   
@@ -42,19 +50,36 @@ function draw() {
 function mousePressed() {
   console.log(flowerno)
   
-  if(mouseX>650 && mouseY<300){
+  if(mouseX>750 && mouseY<300){
  
   }
   
   else{
   
   if (flowerno == 0){
-      image(flower1, mouseX, mouseY, 50,50);
+      image(flower3, mouseX-70, mouseY-100, 150,150);
   }
     
-    if (flowerno == 1){
-      image(flower2, mouseX, mouseY, 50,50);
+  if (flowerno == 1){
+      image(flower6, mouseX-50, mouseY-70, 170,170);
   }
+    
+  if (flowerno == 2){
+     image(flower1, mouseX-80, mouseY-120, 200,200);
+  }
+    
+  if (flowerno == 3){
+      image(flower5, mouseX-60, mouseY-60, 150,150);
+  }
+    
+  if (flowerno == 4){
+      image(flower2, mouseX-50, mouseY-50, 100,100);
+  }
+    
+  if (flowerno == 5){
+      image(flower4, mouseX-40, mouseY-50, 100,100);
+  }
+
 
   } 
   
